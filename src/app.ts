@@ -3,7 +3,6 @@ import express, { Application } from "express";
 const app: Application = express();
 
 import getConnection from "./config/db.js";
-import path from "path";
 import cors from "cors";
 app.use(cors());
 
@@ -13,12 +12,12 @@ app.use(express.urlencoded({ extended: true }));
 
 import indexRouter from "./routes/index.routes.js";
 import {userRouter} from "./routes/user.routes.js";
-if (process.env.NODE_ENV === 'production') {
-  //*Set static folder up in production
-  app.use(express.static('client/build'));
+// if (process.env.NODE_ENV === 'production') {
+//   //*Set static folder up in production
+//   app.use(express.static('client/build'));
 
-  app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
-}
+//   app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+// }
 app.use("/", indexRouter);
 app.use("/api", userRouter);
 
