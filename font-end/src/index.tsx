@@ -18,7 +18,6 @@ const router = createBrowserRouter([
       {
         path: "warehouse/:warehouseId",
         element: <Warehouse />,
-        // errorElement: <ErrorPage />,
       },
     ],
   },
