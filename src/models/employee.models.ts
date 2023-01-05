@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const schema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    role: { type: String, required: true },
+    role: { type: String,enum: ['admin', 'employee'], required: true },
 })
 
 const employeeModel = model('Employee', schema) ;

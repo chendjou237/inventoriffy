@@ -9,5 +9,5 @@ const schema = new Schema({
     date: { type: Date, required: true },
 })
 
-const orderModel = model('Customer', schema) ;
+const orderModel = model('Order', schema) ;
 export default orderModel;

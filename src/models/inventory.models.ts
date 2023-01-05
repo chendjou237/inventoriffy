@@ -7,5 +7,5 @@ const schema = new Schema({
     isActive: { type: Boolean, required: true },
 })
 
-const inventoryModel = model('Customer', schema) ;
+const inventoryModel = model('Inventory', schema) ;
 export default inventoryModel;
