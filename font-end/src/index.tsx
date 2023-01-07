@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, Home } from './pages';
+import { Dashboard, Home, Login, Register } from './pages';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -26,7 +26,20 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element:<Dashboard />,
     errorElement: <ErrorPage />,
-  }
+  },
+  
+  {
+    path: "/login",
+    element:<Login />,
+    errorElement: <ErrorPage />,
+  },
+  
+  {
+    path: "/register",
+    element:<Register />,
+    errorElement: <ErrorPage />,
+  },
+
  
 ]);
 
