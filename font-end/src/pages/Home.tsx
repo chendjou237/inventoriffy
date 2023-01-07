@@ -120,7 +120,7 @@ const Home = () => {
       </div>
       <div className="w-full py-0 bg-gray-500">
         <div className="flex flex-col  justify-center items-center py-10">
-          <h2 className=" text-lg lg:text-4xl text-center font-bold  text-black px-10">
+          <h2 className=" text-lg lg:text-4xl text-center   text-black px-10">
             With Inventoryfy, transform the way your ticketing system works to
             enhance your ticket resolution experience.
           </h2>
@@ -132,28 +132,30 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-10 container lg:max-w-screen-lg mx-auto px-5 text-center">
-        <h1 className="text-xl md:text-2xl lg:text-5xl font-bold mb-10">
-          {" "}
+        <h1 className="text-xl md:text-2xl lg:text-5xl font-bold mb-10 ">
+       
           Features of the application
         </h1>
-        <div className="flex flex-col lg:flex-row space-x-6  ">
+        <div className="flex flex-col md:flex-row  space-y-4 ">
           <FeaturesCard
             imageUrl="https://us.123rf.com/450wm/skypicsstudio/skypicsstudio1904/skypicsstudio190400064/skypicsstudio190400064.jpg?ver=6"
             title="Wharehouse management"
             desc="A warehouse management system (WMS) provides real-time visibility on a business’ inventory and operations"
           />
-          <FeaturesCard
-            imageUrl="https://thumbs.dreamstime.com/b/work-performance-schedule-staff-discipline-time-attendance-tracking-system-office-time-tracking-employee-time-management-155073624.jpg"
-            title="Stock Tracking"
-            desc="A tracking stock is a special equity offering issued by a parent company that tracks the financial performance of a particular segment or divisio"
-          />
+       
           <FeaturesCard
             imageUrl="https://www.pngitem.com/pimgs/m/333-3331732_intelligent-clipart-human-brain-business-intelligence-brain-hd.png"
             title="Intelligent reporting and analytics"
             desc="? Business Intelligence reporting is broadly defined as the process of using a BI tool to prepare and analyze data to find and share actionable insights"
           />
+          
+          <FeaturesCard
+            imageUrl="https://thumbs.dreamstime.com/b/work-performance-schedule-staff-discipline-time-attendance-tracking-system-office-time-tracking-employee-time-management-155073624.jpg"
+            title="Stock Tracking"
+            desc="A tracking stock is a special equity offering issued by a parent company that tracks the financial performance of a particular segment or divisio"
+          />       
         </div>
-        <div className="flex flex-col lg:flex-row mt-10 space-x-6 mb-10">
+        <div className="flex flex-col md:flex-row mt-10  mb-10 space-y-4">
           <FeaturesCard
             imageUrl="https://icon2.cleanpng.com/20180326/coq/kisspng-cartoon-graphic-design-office-5ab938d0114a77.2107562315220881440708.jpg"
             title="Busibess to business"
