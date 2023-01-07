@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dashboard, Home } from './pages';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,7 +13,7 @@ import Warehouse from './routes/warehouse';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Home />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/dashboard",
+    element:<Dashboard />,
+    errorElement: <ErrorPage />,
+  }
  
 ]);
 
