@@ -61,7 +61,7 @@ const Home = () => {
               <div className="mt-3 space-y-2 lg:hidden md:inline-block">
                 <a
                   href="/login"
-                  className="inline-block w-full px-4 py-2 text-center text-white bg-gray-600 rounded-md shadow hover:bg-gray-800 "
+                  className="inline-block w-full px-4 py-2 text-center text-white rounded-md shadow "
                 >
                   Sign in
                 </a>
@@ -142,7 +142,7 @@ const Home = () => {
           {features.map((feature)=> <FeaturesCard
             imageUrl={feature.imageUrl}
             title={feature.title}
-            desc={feature.title}/>)}
+            desc={feature.desc}/>)}
      
         </div>
       </div>
