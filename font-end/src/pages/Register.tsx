@@ -22,7 +22,6 @@ const Register = () => {
     
   }
 
-
   return (
     <>
     <div className="container pt-5">
@@ -72,6 +71,11 @@ const Register = () => {
       <div className="form-control mt-6">
         <button className="btn btn-primary">Continue</button>
       </div>
+       <div className="form-control mt-6 text-center">
+        <p className="text-lg">
+          Already have an account? <a href="/login" className="link link-hover text-purple-600">Login</a>
+        </p>
+       </div>
     </div>
   </div>
   </form>
