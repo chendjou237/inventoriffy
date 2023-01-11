@@ -20,7 +20,7 @@ const Ecommerce = () => {
           <div className="flex justify-between item-center">
             <div>
               <p className='font-bold text-gray-400'>Earnings</p>
-              <p className='text-2xl'>FCFA 63,448.78</p>
+              <p className='text-2xl'>$63,448.78</p>
             </div>
           </div>
           <div className="mt-6">
@@ -80,7 +80,7 @@ const Ecommerce = () => {
               <div>
                 <p >
                   <span className='text-3xl font-semibold'>
-                    FCFA100,000
+                    $100,000
                   </span>
                   <span className='p-1.5 hover:drop-shadow-xl cursor-pointer text-white bg-green-400 rounded-full ml-3 text-xs' >
                   23%
@@ -93,7 +93,7 @@ const Ecommerce = () => {
               <div className='mt-8'>
                 <p >
                   <span className='text-3xl font-semibold'>
-                    FCFA78,000
+                    $78,000
                   </span>
                   {/* <span className='p-1.5 hover:drop-shadow-xl cursor-pointer text-white bg-green-400 rounded-full ml-3 text-xs' >
                   23%
