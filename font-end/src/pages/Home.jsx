@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FeaturesCard, StatsComponent } from "../components";
-import { FEATURES } from "../shared";
+import { FEATURES } from "../data/features";
 
 const Home = () => {
   const [navbar, setNavbar] = useState(false);

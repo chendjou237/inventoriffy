@@ -13,11 +13,11 @@ const Register = () => {
   const [phoneNumber, setNumber] = useState("");
 
   const [isLastScreen, setIsLastScreen] = useState(false);
-  const handleNavigate=(e:React.FormEvent)=>{
+  const handleNavigate=(e)=>{
     e.preventDefault()
     setIsLastScreen(true);
   }
-  const handleSubmit=(e:React.FormEvent)=>{
+  const handleSubmit=(e)=>{
     e.preventDefault()
     
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StatsComponent = (props:any) => {
+const StatsComponent = (props) => {
   return (
     <div className='block px-8 text-center'>
     <h3 className="text-[#ffe045] text-2xl font-bold">

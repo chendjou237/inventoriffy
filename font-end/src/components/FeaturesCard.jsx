@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FeaturesCard = (props:any) => {
+const FeaturesCard = (props) => {
   return (
     <div className="col-auto  ">
             <div className="card bg-base-300 shadow-xl">
