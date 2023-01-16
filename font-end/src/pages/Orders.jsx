@@ -7,8 +7,6 @@ import {
 } from '@syncfusion/ej2-react-grids'
 import { ordersData, contextMenuItem, ordersGrid } from '../data/dummy'
 import { Header } from '../components'
-// import { Button } from '@ma'
-// import { Button } from "@material-tailwind/react";
 const Orders = (props) => {
   if (props.isLoading) {
     return (
