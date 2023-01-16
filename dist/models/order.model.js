@@ -4,7 +4,7 @@ const schema = new Schema({
     customer: { type: Schema.Types.ObjectId, ref: 'Customer' },
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
-    peymentStatus: { type: String, required: true },
+    paymentStatus: { type: String, required: true },
     date: { type: Date, required: true },
 });
 const orderModel = model('Order', schema);
