@@ -3,7 +3,7 @@ import  userModel  from "../models/user.models.js";
 
 export const  getOrders = async(req: Request, res: Response) => {
   try {
-    const users = await (await userModel.find());
+    const users = (await userModel.find());
     res.status(200).send(users);
   } catch (error) {
     throw error
