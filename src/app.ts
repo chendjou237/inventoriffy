@@ -12,6 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 
 import indexRouter from "./routes/index.routes.js";
 import {userRouter} from "./routes/user.routes.js";
+import { customerRouter } from "./routes/customer.routes.js";
+import { EmployeeRouter } from "./routes/employee.routes.js";
+import { ProductRouter } from "./routes/product.routes.js";
+import { BusinessRouter } from "./routes/business.routes.js";
 // if (process.env.NODE_ENV === 'production') {
 //   //*Set static folder up in production
 //   app.use(express.static('client/build'));
@@ -20,6 +24,10 @@ import {userRouter} from "./routes/user.routes.js";
 // }
 app.use("/", indexRouter);
 app.use("/api", userRouter);
+app.use("/api", customerRouter)
+app.use("/api", EmployeeRouter)
+app.use("/api", ProductRouter)
+app.use("/api", BusinessRouter)
 
 const PORT: string = process.env.PORT || "8080";
 

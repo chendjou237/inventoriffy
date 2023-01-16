@@ -8,11 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "npx tsc && node dist/app.js",
-      "backend": "nodemon dist/app.js",
-      "frontend": "npm start --prefix frontend",
-      "frontendinstall": "npm install --prefix frontend",
-      "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-      "render-postbuild": "NPM_CONFIG_PRODUCTION=false   npm install --prefix frontend && npm run build -- prefix frontend"
+    "backend": "nodemon dist/app.js",
+    "frontend": "npm start --prefix frontend",
+    "frontendinstall": "npm install --prefix frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false   npm install --prefix frontend && npm run build -- prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +31,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.8.2"
+    "mongoose": "^6.8.3",
+    "react-icons": "^4.7.1"
   }
 }

@@ -7,3 +7,5 @@ const schema = new Schema({
 
 const employeeModel = model('Employee', schema) ;
 export default employeeModel;
+
+
