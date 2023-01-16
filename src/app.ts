@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
 import indexRouter from "./routes/index.routes.js";
 import {userRouter} from "./routes/user.routes.js";
 import { customerRouter } from "./routes/customer.routes.js";

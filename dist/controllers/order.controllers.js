@@ -1,7 +1,7 @@
 import orderModel from "../models/order.model.js";
 export const getOrders = async (req, res) => {
     try {
-        const orders = await (await orderModel.find());
+        const orders = (await orderModel.find());
         res.status(200).send(orders);
     }
     catch (error) {
