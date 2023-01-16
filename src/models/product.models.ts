@@ -6,8 +6,8 @@ const schema = new Schema({
     unitPrice: { type: Number, required: true },
     category: { type: String, required: true },
     image: { type: String, required: true },
-    businessId: { type: Schema.Types.Subdocument, ref: 'Business' },
-})
-
+    businessId: { type: Schema.Types.ObjectId, ref: 'Business' },
+ })
+ 
 const productModel = model('Product', schema) ;
 export default productModel;

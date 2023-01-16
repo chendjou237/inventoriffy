@@ -1,30 +1,30 @@
-import { Request, Response } from "express";
-import  userModel  from "../models/user.models.js";
+import { Request, response, Response } from "express";
+import  productModels  from "../models/product.models.js";
 
-export const  getOrders = async(req: Request, res: Response) => {
+export const  getProducts = async(req: Request, res: Response) => {
   try {
-    const users = await (await userModel.find());
-    res.status(200).send(users);
+    const products = await (await productModels.find());
+    res.status(200).send(products);
   } catch (error) {
     throw error
   }
-  res.status(200).send("get users");
+  res.status(200).send("get products");
 };
 
-export const postOrder = async(req: Request, res: Response) => {
-  if(!req.body.name || !req.body.email) {
-    res.status(400).send("name and email are required");
+export const postProduct = async(req: Request, res: Response) => {
+  if(!req.body.name || !req.body.unitPrice) {
+    res.status(400).send("name and unit price are required");
     return;
   }
 
   try {
-    const newUser =  (await userModel.create(req.body));
- await newUser.save();
+    const newProduct =  (await productModels.create(req.body));
+ await newProduct.save();
 
   res
     .status(200)
     .send(
-      "posted user name is " +  + " and email is " + req.body.email
+      "posted product name is " + req.body.name + " and price is " + req.body.unitPrice
     );
     
   } catch (error) {
@@ -33,11 +33,27 @@ export const postOrder = async(req: Request, res: Response) => {
   }
  
 };
+export const updateProduct = async (req: Request, res: Response) => {
+  
+  const query = { _id: req.query.id};
 
-export const updateOrder = (req: Request, res: Response) => {
-    res.status(200).send("updated user");
-    }
+  const updateDocument = { $set: req.body};
 
-export const deleteOrder = (req: Request, res: Response) => {
-    res.status(200).send("deleted user");
-    }   
+  try { 
+   const resp = await productModels.findOneAndUpdate(query, updateDocument,  {upsert: true});
+   await resp.save()
+    response.status(200).send("successfully updated product");
+  } catch (error) {
+    res.status(500).send(`this was the error: ${error}`);
+  }
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+  const query = { _id: req.query.id };
+  try {
+    const resp = await productModels.deleteOne(query);
+    res.send("deleted successfully" + resp.acknowledged);
+  } catch (error) {
+    res.status(500).send("something went wrong" + error);
+  }
+};

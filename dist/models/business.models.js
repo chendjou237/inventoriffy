@@ -5,8 +5,8 @@ const schema = new Schema({
     contact: { type: String, required: true },
     logo: { type: String, required: true },
     address: { type: String, required: true },
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, },
-    users: [{ type: Schema.Types.ObjectId, ref: 'Employee', required: true, }],
+    adminId: { type: Schema.Types.ObjectId, ref: 'User', required: true, },
+    users: [{ type: Schema.Types.ObjectId, ref: 'Employee', required: false, }],
 });
 const businessModel = model('Business', schema);
 export default businessModel;
