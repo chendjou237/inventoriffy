@@ -22,6 +22,7 @@ import {
   Editor,
   Line,
   Home,
+  OrderCreate
 } from "./pages";
 import "./App.css";
 import SideBar from "./components/Sidebar";
@@ -156,7 +157,7 @@ const App = () => {
                 <Route path="/ecommerce" element={<Ecommerce />} />
 
                 {/**Pages */}
-                <Route path="/orders" element={<Orders data={orderData} isLoading={loadingOrders} errMess={ordersError} />} />
+                <Route exact path="/orders" element={<Orders data={orderData} isLoading={loadingOrders} errMess={ordersError} />} />
                 <Route path="/employees" element={<Employees />} />
                 <Route path="/customers" element={<Customers data={customerData} isLoading={loadingCustomers} errMess={customersError} />} />
 
@@ -178,6 +179,7 @@ const App = () => {
                 />
                 <Route path="/pyramid" element={<Pyramid />} />
                 <Route path="/stacked" element={<Stacked />} />
+                <Route path="/orders/create" element={<OrderCreate />} />
               </Routes>
             </div>
           </div>
