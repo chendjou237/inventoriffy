@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import  orderModel  from "../models/order.model.js";
 
-export const  getOrders = async(req: Request, res: Response) => {
+export const getOrders = async(req: Request, res: Response) => {
   try {
-    const orders = await (await orderModel.find());
+    const orders = (await orderModel.find());
     res.status(200).send(orders);
   } catch (error) {
     throw error

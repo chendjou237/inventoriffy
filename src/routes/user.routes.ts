@@ -3,9 +3,10 @@ import { getUsers, postUsers, updateUser, deleteUser } from "../controllers/user
 
 const router = Router();
 
-router.get('/user', getUsers)
+router.get('/users', getUsers)
 router.post('/user', postUsers)
 router.put('/user', updateUser)
 router.delete('/user', deleteUser)
+
 
 export  { router as userRouter};

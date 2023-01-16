@@ -3,7 +3,7 @@ import { getCustomer, postCustomers, updatecustomer, deletecustomer } from "../c
 
 const router = Router();
 
-router.get('/customer', getCustomer)
+router.get('/customers', getCustomer)
 router.post('/customer', postCustomers)
 router.put('/customer', updatecustomer)
 router.delete('/customer', deletecustomer)

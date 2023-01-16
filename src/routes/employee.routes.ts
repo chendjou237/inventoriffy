@@ -3,9 +3,9 @@ import { getEmployee, postEmployees, updateEmployee, deleteEmployee } from "../c
 
 const router = Router();
 
-router.get('/employee', getEmployee)
-router.post('/employee', postEmployees)
-router.put('/employee', updateEmployee)
-router.delete('/employee', deleteEmployee)
+router.get('/', getEmployee)
+router.post('/', postEmployees)
+router.put('/', updateEmployee)
+router.delete('/', deleteEmployee)
 
 export  { router as EmployeeRouter};
