@@ -4,9 +4,8 @@ import userModel from "../models/user.models.js";
 export const getUsers = async () => {
     try {
         const users: User[] = [];
-      (await userModel.find()).map((user ) => {
-          const newUser = user as User;
-            users.push(newUser)
+      (await userModel.find()).map((user) => {
+            users.push(user)
         }
         );
         return users;

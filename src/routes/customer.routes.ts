@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getCustomer, postCustomers, updatecustomer, deletecustomer } from "../controllers/customer.controllers.js";
+import { getCustomers,getCustomer, postCustomers, updatecustomer, deletecustomer } from "../controllers/customer.controllers.js";
 
 const router = Router();
 
+router.get('/customers', getCustomers)
 router.get('/customer', getCustomer)
 router.post('/customer', postCustomers)
 router.put('/customer', updatecustomer)

@@ -1,7 +1,8 @@
 import { Schema, model } from "mongoose";
+import { User } from "../interfaces/user.interfaces";
 
 // TODO: Add the schema for the User model
-const schema = new Schema({
+const schema = new Schema<User>({
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true }, 

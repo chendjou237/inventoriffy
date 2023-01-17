@@ -1,8 +1,18 @@
 import { response } from "express";
 import customerModel from "../models/customer.models.js";
+export const getCustomers = async (req, res) => {
+    try {
+        const customers = await customerModel.find();
+        res.status(200).send(customers);
+    }
+    catch (error) {
+        res.status(500).send(error);
+    }
+};
 export const getCustomer = async (req, res) => {
     try {
-        const customer = await await customerModel.find();
+        const id = req.query.id;
+        const customer = await customerModel.findById(id);
         res.status(200).send(customer);
     }
     catch (error) {
