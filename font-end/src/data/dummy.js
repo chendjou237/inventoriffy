@@ -5866,3 +5866,76 @@ export const PyramidData = [
   { x: 'Fruits', y: 520, text: '520 cal' },
   { x: 'Bread, Rice, Pasta', y: 930, text: '930 cal' },
 ];
+
+
+export const dummmyProduct = [
+  {
+    id: 1,
+    name: 'Product 1',
+    price: 100,
+    quantity: 50,
+    image: 'https://picsum.photos/200/300',
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    price: 200,
+    quantity: 100,
+    image: 'https://picsum.photos/200/300',
+  },
+
+  {
+    id: 3,
+    name: 'Product 2',
+    price: 200,
+    quantity: 50,
+    image: 'https://picsum.photos/200/300',
+  }
+  ,
+  {
+    id: 7,
+    name: 'Product 2',
+    price: 200,
+    quantity: 20,
+    image: 'https://picsum.photos/200/300',
+  }
+  ,
+  {
+    id: 4,
+    name: 'Product 2',
+    price: 200,
+    quantity: 30,
+    image: 'https://picsum.photos/200/300',
+
+  },
+  {
+    id: 5,
+    name: 'Product 5',
+    price: 200,
+    quantity: 10,
+    image: 'https://picsum.photos/200/300',
+
+  },
+  {
+    id: 6,
+    name: 'Product 5',
+    price: 200,
+    quantity: 30,
+    image: 'https://picsum.photos/200/300',
+  }]
+
+export const paymentMethods = [
+  {
+    id: 1,
+    name: "Mtn Mobile Money",
+  },
+  {
+
+    id: 2,
+    name: "Orange Money",
+  },
+  {
+    id: 3,
+    name: "Bank Payment"
+  }
+]
