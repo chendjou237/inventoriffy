@@ -4,12 +4,14 @@ import { dummmyProduct, paymentMethods } from '../data/dummy'
 const OrderCreate = () => {
     const [maxQuantity, setmaxQuantity] = useState(0)
     const [paymentMethod, setPaymentMethod] = useState("")
+    const [processedTransaction, setProcessedTransaction] = useState(null)
     useEffect(() => {
         var e = document.getElementById("product");
         var maxQ = parseInt(e.value)
         setmaxQuantity(dummmyProduct[maxQ].quantity);
         document.getElementById("quantity").value = "1"
     }, []);
+    // handler functions
     function handleSelectChange() {
         console.log("Triggered")
         var e = document.getElementById("product");
@@ -27,15 +29,106 @@ const OrderCreate = () => {
         }
     }
     function handlePaymentMethodChange(e) {
-        // alert(e.target.value)
         setPaymentMethod(e.target.value)
     }
+    // handle submit
+    function handleOrderSubmit(e) {
+        e.preventDefault()
+
+    }
+    // create arror post function
+    const postOrder = ({ paymentMethod, transactionAmount, customerName, customerNumber, customerEmail, product, quantity }) => {
+        const newTransaction = {
+            paymentMethod: paymentMethod,
+            transactionAmount: transactionAmount,
+        }
+        newTransaction.date = new Date().toISOString();
+
+        const newOrder = {
+            customerName: customerName,
+            customerEmail: customerEmail,
+            customerNumber: customerNumber,
+            productId: product.id,
+            productName: product.name,
+            quantity: parseInt(document.getElementById("quantity").value)
+        }
+        // posting payment transaction
+        fetch(baseUrl + "transactions", {
+            method: "POST",
+            body: JSON.stringify(newTransaction),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "same-origin",
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response
+                }
+                else {
+                    var error = new Error(
+                        "Error " + response.status + ": " + response.statusText
+                    );
+                    error.response = response;
+                    throw error;
+                }
+            },
+                (error) => {
+                    var errmess = new Error(error.message);
+                    throw errmess;
+                }
+            )
+            .then((response) => response.json())
+            .then((response) => {
+                newOrder.date = new Date().toISOString();
+                newOrder.transactionId = response.id;
+                fetch(baseUrl + "orders", {
+                    method: "POST",
+                    body: JSON.stringify(newTransaction),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: "same-origin",
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response
+                        }
+                        else {
+                            var error = new Error(
+                                "Error " + response.status + ": " + response.statusText
+                            );
+                            error.response = response;
+                            throw error;
+                        }
+                    },
+                        (error) => {
+                            var errmess = new Error(error.message);
+                            throw errmess;
+                        }
+                    )
+                    .then((response) => response.json())
+                    .then((response) => {
+
+                    })
+                    .catch((error) => {
+                        console.log("post comments", error.message);
+                        alert("Your comment could not be posted\nError: " + error.message);
+                    });
+            })
+            .catch((error) => {
+                console.log("post comments", error.message);
+                alert("Your comment could not be posted\nError: " + error.message);
+            });
+
+    }
+
     return (
         <>
             <div className="mt-10 sm:mt-0  max-h-screen w-full px-20">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="mt-5 md:col-span-2 md:mt-0">
-                        <form action="#" method="POST">
+                        <form method="POST" onSubmit={handleOrderSubmit}>
                             <div className="overflow-hidden shadow sm:rounded-md">
                                 <div className="px-4 py-5 sm:p-6">
                                     <div className="grid grid-cols-6 gap-6">
@@ -78,7 +171,7 @@ const OrderCreate = () => {
                                                 id="customer-email-address"
                                                 autoComplete="email"
                                                 placeholder='Enter Customer Address'
-                                                className="mt-1 block w-full h-9  rounded-md border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                className="mt-1 block w-full h-9 px-5 rounded-md border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
                                         </div>
 
@@ -146,7 +239,7 @@ const OrderCreate = () => {
                                                 autoComplete="street-address"
                                                 className="mt-1 block w-full rounded-md h-9 px-5 border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
-                                        </div>) : (
+                                        </div>) : ((paymentMethod === "Bank Payment") ?
                                             < div className="col-span-6">
                                                 <label htmlFor="bank-account-number" className="block text-sm font-medium text-gray-700">
                                                     Bank Account Number
@@ -162,35 +255,8 @@ const OrderCreate = () => {
                                                         autoComplete="street-address"
                                                         className="mt-1 block w-full rounded-md h-9 px-5 border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                     />
-                                                </div>
+                                                </div> : null
                                         )}
-
-
-                                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                            <label htmlFor="region" className="block text-sm font-medium text-gray-700">
-                                                State / Province
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="region"
-                                                id="region"
-                                                autoComplete="address-level1"
-                                                className="mt-1 block w-full rounded-md h-9  border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            />
-                                        </div>
-
-                                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                            <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
-                                                ZIP / Postal code
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="postal-code"
-                                                id="postal-code"
-                                                autoComplete="postal-code"
-                                                className="mt-1 block w-full rounded-md border-gray-500 h-9  shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            />
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
