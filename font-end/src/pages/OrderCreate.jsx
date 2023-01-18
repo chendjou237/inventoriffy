@@ -80,6 +80,7 @@ const OrderCreate = () => {
             price: transactionAmount,
             prouctDesc: product.description,
             productimage: product.image,
+            paymentStatus: "completed"
         }
         // posting payment transaction
         fetch(baseUrl + "transactions", {

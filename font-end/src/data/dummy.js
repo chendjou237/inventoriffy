@@ -5874,7 +5874,7 @@ export const dummmyProduct = [
     name: 'Product 1',
     price: 100,
     quantity: 50,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
     decription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper lacus non porttitor ornare. Nullam ut iaculis est. Pellentesque vel nunc lacus. Nam turpis sapien, suscipit vitae gravida eu, faucibus non justo. Quisque nunc ante, maximus in pellentesque sit amet, varius vitae erat. Mauris euismod accumsan turpis et facilisis. Pellentesque a scelerisque nisi. Nam ultrices tristique ligula, ac convallis augue mattis ac. Nullam justo nulla, semper egestas pulvinar quis, malesuada at orci. Integer ut laoreet lorem. Sed rutrum, ipsum ut iaculis eleifend, justo magna blandit odio, a ornare elit elit et mauris. Donec molestie lectus lacus, sit amet sollicitudin dui porttitor rhoncus. Duis ac quam sed velit gravida accumsan. Sed dictum gravida nunc in rutrum. Etiam gravida consequat ex, in vehicula lectus fringilla vel "
   },
   {
@@ -5882,7 +5882,7 @@ export const dummmyProduct = [
     name: 'Product 2',
     price: 200,
     quantity: 100,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
     decription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper lacus non porttitor ornare. Nullam ut iaculis est. Pellentesque vel nunc lacus. Nam turpis sapien, suscipit vitae gravida eu, faucibus non justo. Quisque nunc ante, maximus in pellentesque sit amet, varius vitae erat. Mauris euismod accumsan turpis et facilisis. Pellentesque a scelerisque nisi. Nam ultrices tristique ligula, ac convallis augue mattis ac. Nullam justo nulla, semper egestas pulvinar quis, malesuada at orci. Integer ut laoreet lorem. Sed rutrum, ipsum ut iaculis eleifend, justo magna blandit odio, a ornare elit elit et mauris. Donec molestie lectus lacus, sit amet sollicitudin dui porttitor rhoncus. Duis ac quam sed velit gravida accumsan. Sed dictum gravida nunc in rutrum. Etiam gravida consequat ex, in vehicula lectus fringilla vel "
 
   },
@@ -5892,7 +5892,7 @@ export const dummmyProduct = [
     name: 'Product 2',
     price: 200,
     quantity: 50,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
     decription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper lacus non porttitor ornare. Nullam ut iaculis est. Pellentesque vel nunc lacus. Nam turpis sapien, suscipit vitae gravida eu, faucibus non justo. Quisque nunc ante, maximus in pellentesque sit amet, varius vitae erat. Mauris euismod accumsan turpis et facilisis. Pellentesque a scelerisque nisi. Nam ultrices tristique ligula, ac convallis augue mattis ac. Nullam justo nulla, semper egestas pulvinar quis, malesuada at orci. Integer ut laoreet lorem. Sed rutrum, ipsum ut iaculis eleifend, justo magna blandit odio, a ornare elit elit et mauris. Donec molestie lectus lacus, sit amet sollicitudin dui porttitor rhoncus. Duis ac quam sed velit gravida accumsan. Sed dictum gravida nunc in rutrum. Etiam gravida consequat ex, in vehicula lectus fringilla vel "
   }
   ,
@@ -5901,7 +5901,7 @@ export const dummmyProduct = [
     name: 'Product 2',
     price: 200,
     quantity: 20,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
     decription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper lacus non porttitor ornare. Nullam ut iaculis est. Pellentesque vel nunc lacus. Nam turpis sapien, suscipit vitae gravida eu, faucibus non justo. Quisque nunc ante, maximus in pellentesque sit amet, varius vitae erat. Mauris euismod accumsan turpis et facilisis. Pellentesque a scelerisque nisi. Nam ultrices tristique ligula, ac convallis augue mattis ac. Nullam justo nulla, semper egestas pulvinar quis, malesuada at orci. Integer ut laoreet lorem. Sed rutrum, ipsum ut iaculis eleifend, justo magna blandit odio, a ornare elit elit et mauris. Donec molestie lectus lacus, sit amet sollicitudin dui porttitor rhoncus. Duis ac quam sed velit gravida accumsan. Sed dictum gravida nunc in rutrum. Etiam gravida consequat ex, in vehicula lectus fringilla vel "
   }
   ,
@@ -5910,7 +5910,7 @@ export const dummmyProduct = [
     name: 'Product 2',
     price: 200,
     quantity: 30,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
 
   },
   {
@@ -5918,7 +5918,7 @@ export const dummmyProduct = [
     name: 'Product 5',
     price: 200,
     quantity: 10,
-    image: 'https://picsum.photos/200/300',
+    image: 'https://t4.ftcdn.net/jpg/01/82/76/07/360_F_182760788_FNDgObv8liPHzQjx8UdewC5LAwB1aMSg.jpg',
     decription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper lacus non porttitor ornare. Nullam ut iaculis est. Pellentesque vel nunc lacus. Nam turpis sapien, suscipit vitae gravida eu, faucibus non justo. Quisque nunc ante, maximus in pellentesque sit amet, varius vitae erat. Mauris euismod accumsan turpis et facilisis. Pellentesque a scelerisque nisi. Nam ultrices tristique ligula, ac convallis augue mattis ac. Nullam justo nulla, semper egestas pulvinar quis, malesuada at orci. Integer ut laoreet lorem. Sed rutrum, ipsum ut iaculis eleifend, justo magna blandit odio, a ornare elit elit et mauris. Donec molestie lectus lacus, sit amet sollicitudin dui porttitor rhoncus. Duis ac quam sed velit gravida accumsan. Sed dictum gravida nunc in rutrum. Etiam gravida consequat ex, in vehicula lectus fringilla vel "
 
   },
