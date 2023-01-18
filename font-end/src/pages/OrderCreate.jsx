@@ -6,13 +6,23 @@ import { useNavigate } from "react-router-dom"
 const OrderCreate = () => {
     const {
         setOrderData,
+        orderData,
         ordersError,
         setOrdersError,
     } = useStateContext();
+
+    const [customerName, setcustomerName] = useState("")
+    const [customerNumber, setcustomerNumber] = useState("")
+    const [customerEmail, setcustomerEmail] = useState("")
+    const [product, setproduct] = useState(dummmyProduct[0])
+    const [quantity, setquantity] = useState(1)
+    const [transactionAmount, settransactionAmount] = useState(0)
     const [maxQuantity, setmaxQuantity] = useState(0)
     const [paymentMethod, setPaymentMethod] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const navigator = useNavigate()
 
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     useEffect(() => {
         var e = document.getElementById("product");
         var maxQ = parseInt(e.value)
@@ -26,6 +36,7 @@ const OrderCreate = () => {
         var maxQ = parseInt(e.value);
         setmaxQuantity(dummmyProduct[maxQ].quantity);
         console.log(dummmyProduct[maxQ].quantity)
+        setproduct(dummmyProduct[maxQ])
         document.getElementById("quantity").value = "1"
 
     }
@@ -34,6 +45,12 @@ const OrderCreate = () => {
         var maxQ = parseInt(e.value);
         if (maxQ > maxQuantity) {
             document.getElementById("quantity").value = maxQuantity
+            setquantity(maxQuantity)
+            settransactionAmount(maxQuantity * product.price)
+        }
+        else {
+            setquantity(maxQ)
+            settransactionAmount(maxQ * product.price)
         }
     }
     function handlePaymentMethodChange(e) {
@@ -42,10 +59,11 @@ const OrderCreate = () => {
     // handle submit
     function handleOrderSubmit(e) {
         e.preventDefault()
-
+        setIsLoading(true)
+        postOrder(paymentMethod, transactionAmount, customerName, customerNumber, customerEmail, product, quantity)
     }
     // create arror post function
-    const postOrder = ({ paymentMethod, transactionAmount, customerName, customerNumber, customerEmail, product, quantity }) => {
+    const postOrder = (paymentMethod, transactionAmount, customerName, customerNumber, customerEmail, product, quantity) => {
         const newTransaction = {
             paymentMethod: paymentMethod,
             transactionAmount: transactionAmount,
@@ -58,7 +76,10 @@ const OrderCreate = () => {
             customerNumber: customerNumber,
             productId: product.id,
             productName: product.name,
-            quantity: parseInt(document.getElementById("quantity").value)
+            quantity: quantity,
+            price: transactionAmount,
+            prouctDesc: product.description,
+            productimage: product.image,
         }
         // posting payment transaction
         fetch(baseUrl + "transactions", {
@@ -92,7 +113,7 @@ const OrderCreate = () => {
                 newOrder.transactionId = response.id;
                 fetch(baseUrl + "orders", {
                     method: "POST",
-                    body: JSON.stringify(newTransaction),
+                    body: JSON.stringify(newOrder),
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -117,16 +138,19 @@ const OrderCreate = () => {
                     )
                     .then((response) => response.json())
                     .then((response) => {
-
+                        // setOrderData((oldOrders) => oldOrders.append(response))
+                        setOrderData((oldOrders) => [...oldOrders, response])
                     })
                     .catch((error) => {
                         console.log("post comments", error.message);
                         setShowModal(true)
+                        setIsLoading(false)
                     });
             })
             .catch((error) => {
                 console.log("post comments", error.message);
                 setShowModal(true)
+                setIsLoading(false)
             });
 
     }
@@ -149,6 +173,8 @@ const OrderCreate = () => {
                                                 name="customer-name"
                                                 id="customer-name"
                                                 placeholder='Enter Customer Name'
+                                                value={customerName}
+                                                onChange={(e) => setcustomerName(e.target.value)}
                                                 required
                                                 className="mt-1 block w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm h-9 px-5"
                                             />
@@ -163,6 +189,8 @@ const OrderCreate = () => {
                                                 name="phone-number"
                                                 id="phone-number"
                                                 required
+                                                value={customerNumber}
+                                                onChange={(e) => setcustomerNumber(e.target.value)}
                                                 placeholder='Enter Phone Number'
                                                 autoComplete="phone"
                                                 className="mt-1 block w-full h-9 rounded-md border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -178,6 +206,8 @@ const OrderCreate = () => {
                                                 name="customer-email-address"
                                                 id="customer-email-address"
                                                 autoComplete="email"
+                                                value={customerEmail}
+                                                onChange={(e) => setcustomerEmail(e.target.value)}
                                                 placeholder='Enter Customer Address'
                                                 className="mt-1 block w-full h-9 px-5 rounded-md border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                             />
@@ -212,6 +242,7 @@ const OrderCreate = () => {
                                                 min={1}
                                                 max={maxQuantity}
                                                 accept
+                                                value={quantity}
                                                 onChange={() => handleQuantityChange()}
                                                 autoComplete="street-address"
                                                 className="mt-1 block w-full rounded-md h-9 px-5 border-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -242,6 +273,7 @@ const OrderCreate = () => {
                                                 id="payment-number"
                                                 minLength={9}
                                                 maxLength={9}
+
                                                 required
                                                 placeholder='Please enter payment number'
                                                 autoComplete="street-address"
@@ -272,7 +304,15 @@ const OrderCreate = () => {
                                         type="submit"
                                         className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
-                                        Save
+                                        {!isLoading ? <p>Submit</p> :
+                                            <div role="status">
+                                                <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 " viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                </svg>
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        }
                                     </button>
                                 </div>
                             </div>
@@ -331,7 +371,10 @@ const OrderCreate = () => {
                                     <button
                                         className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
-                                        onClick={() => setShowModal(false)}
+                                        onClick={() => {
+                                            navigator(-1)
+                                            setShowModal(false)
+                                        }}
                                     >
                                         Try again later
                                     </button>
