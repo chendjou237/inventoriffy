@@ -22,7 +22,8 @@ import {
   Editor,
   Line,
   Home,
-  OrderCreate
+  OrderCreate,
+  OrderInvoice
 } from "./pages";
 import "./App.css";
 import SideBar from "./components/Sidebar";
@@ -57,8 +58,7 @@ const App = () => {
     setStockError
   } = useStateContext();
 
-
-  useEffect(() => {
+  function getOrders() {
     fetch(`${baseUrl}orders`)
       .then((res) => {
         if (res.ok) {
@@ -85,7 +85,8 @@ const App = () => {
         setOrderData([]);
         console.log(err);
       });
-    // fetch customers data
+  }
+  function getCustomers() {
     fetch(`${baseUrl}customers`)
       .then((res) => {
         if (res.ok) {
@@ -110,7 +111,39 @@ const App = () => {
         setLoadingCustomers(false);
         setCustomerData([]);
       });
+  }
 
+  function getProducts() {
+    fetch(`${baseUrl}products`)
+      .then((res) => {
+        if (res.ok) {
+          return res
+        }
+        else {
+          var error = new Error(
+            `Error ${res.status}: ${res.statusText}`
+          );
+          error.response = res
+          throw error
+        }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        setStockData(data);
+        setLoadingStock(false);
+        setStockError(null)
+      })
+      .catch((err) => {
+        setStockError(err);
+        setLoadingStock(false);
+        setStockData([]);
+      });
+  }
+
+  useEffect(() => {
+    getOrders()
+    getCustomers()
+    getProducts()
   }, [])
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
@@ -158,7 +191,7 @@ const App = () => {
 
                 {/**Pages */}
                 <Route exact path="/orders" element={<Orders data={orderData} isLoading={loadingOrders} errMess={ordersError} />} />
-                <Route path="/employees" element={<Employees />} />
+                <Route path="/products" element={<Employees data={stockData} isLoading={loadingStock} errMess={stockError} />} />
                 <Route path="/customers" element={<Customers data={customerData} isLoading={loadingCustomers} errMess={customersError} />} />
 
                 {/**Apps */}
@@ -166,7 +199,6 @@ const App = () => {
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/color-picker" element={<ColorPicker />} />
-
                 {/** Charts */}
                 <Route path="/line" element={<Line />} />
                 <Route path="/area" element={<Area />} />
@@ -180,6 +212,7 @@ const App = () => {
                 <Route path="/pyramid" element={<Pyramid />} />
                 <Route path="/stacked" element={<Stacked />} />
                 <Route path="/orders/create" element={<OrderCreate />} />
+                {/* <Route path="/orders/invoice" element={<OrderInvoice />} /> */}
               </Routes>
             </div>
           </div>

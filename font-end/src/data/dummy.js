@@ -5,7 +5,7 @@ import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft
 import { BiColorFill } from 'react-icons/bi';
 import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
-import { MdOutlineSupervisorAccount } from 'react-icons/md';
+import { MdOutlineSupervisorAccount, MdProductionQuantityLimits } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
@@ -65,17 +65,17 @@ const gridEmployeeProfile = (props) => (
   <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
+      src={props.image}
       alt="employee"
     />
-    <p>{props.Name}</p>
+    <p>{props.name}</p>
   </div>
 );
 
-const gridEmployeeCountry = (props) => (
+const getQuantityGrid = (props) => (
   <div className="flex items-center justify-center gap-2">
-    <GrLocation />
-    <span>{props.Country}</span>
+    <MdProductionQuantityLimits />
+    <span>{props.quantity}</span>
   </div>
 );
 export const EditorData = () => (
@@ -433,40 +433,43 @@ export const customersGrid = [
 
 ];
 
-export const employeesGrid = [
-  { headerText: 'Employee',
+export const productGrid = [
+  {
+    headerText: 'Product',
     width: '150',
     template: gridEmployeeProfile,
     textAlign: 'Center' },
-  { field: 'Name',
+  {
+    field: 'name',
     headerText: '',
     width: '0',
     textAlign: 'Center',
   },
-  { field: 'Title',
-    headerText: 'Designation',
+  {
+    field: 'decription',
+    headerText: 'Description ',
     width: '170',
     textAlign: 'Center',
   },
   { headerText: 'Country',
     width: '120',
     textAlign: 'Center',
-    template: gridEmployeeCountry },
+    template: getQuantityGrid
+  },
 
-  { field: 'HireDate',
-    headerText: 'Hire Date',
+  {
+    field: 'date',
+    headerText: 'Added Date',
     width: '135',
     format: 'yMd',
     textAlign: 'Center' },
-
-  { field: 'ReportsTo',
-    headerText: 'Reports To',
-    width: '120',
-    textAlign: 'Center' },
-  { field: 'EmployeeID',
-    headerText: 'Employee ID',
+  {
+    field: 'id',
+    headerText: 'Product Id',
     width: '125',
-    textAlign: 'Center' },
+    textAlign: 'Center',
+    isPrimaryKey: true
+  },
 ];
 
 export const links = [
@@ -488,7 +491,7 @@ export const links = [
         icon: <AiOutlineShoppingCart />,
       },
       {
-        name: 'employees',
+        name: 'products',
         icon: <IoMdContacts />,
       },
       {
