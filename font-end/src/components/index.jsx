@@ -16,3 +16,9 @@ export { default as Header } from './Header';
 export { default as FeaturesCard} from './FeaturesCard';
 export { default as StatsComponent} from './StatsComponent';
 export { default as Hero} from './Hero';
+export { default as BillTo } from './BillTo';
+export { default as InvoiceTitle } from './InvoiceTitle';
+export { default as InvoiceNo } from './InvoiceNo';
+export { default as InvoiceItemsTable } from './InvoiceItemsTable';
+export { default as InvoiceThankYouMsg } from './InvoiceItemsTable';
+

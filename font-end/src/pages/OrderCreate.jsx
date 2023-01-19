@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom"
 const OrderCreate = () => {
     const {
         setOrderData,
-        orderData,
-        ordersError,
-        setOrdersError,
+        // orderData,
+        // ordersError,
+        // setOrdersError,
     } = useStateContext();
 
     const [customerName, setcustomerName] = useState("")
@@ -139,7 +139,6 @@ const OrderCreate = () => {
                     )
                     .then((response) => response.json())
                     .then((response) => {
-                        // setOrderData((oldOrders) => oldOrders.append(response))
                         setOrderData((oldOrders) => [...oldOrders, response])
                         navigator(-1)
                     })
