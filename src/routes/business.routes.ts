@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { getBusinesses, postBusiness, updateBusiness, deleteBusiness } from "../controllers/business.controllers.js";
+import { getBusinessesController, postBusinessesController, updateBusinessController, deleteBusinessController } from "../controllers/business.controllers.js";
 
 const router = Router();
 
-router.get('/Businesses', getBusinesses)
-router.post('/Business', postBusiness)
-router.put('/Business', updateBusiness)
-router.delete('/Business', deleteBusiness)
+router.get('/Businesses', getBusinessesController)
+router.post('/Business', postBusinessesController)
+router.put('/Business', updateBusinessController)
+router.delete('/Business', deleteBusinessController)
 
 export  { router as BusinessRouter};

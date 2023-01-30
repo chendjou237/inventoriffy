@@ -3,11 +3,17 @@ import express, { Application } from "express";
 const app: Application = express();
 
 import getConnection from "./config/db.js";
+import { authConfig } from "./config/auth.js";
+
+
 import cors from "cors";
+import { config } from "dotenv";
+config()
 app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(authConfig)
 
 
 
@@ -20,7 +26,6 @@ import { BusinessRouter } from "./routes/business.routes.js";
 // if (process.env.NODE_ENV === 'production') {
 //   //*Set static folder up in production
 //   app.use(express.static('client/build'));
-
 //   app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
 // }
 app.use("/", indexRouter);

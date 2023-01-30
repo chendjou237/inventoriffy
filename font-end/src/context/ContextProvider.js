@@ -5,7 +5,7 @@ const StateContext = createContext();
 const initialState = {
     chat: false,
     cart: false,
-    userProfile: falses,
+    userProfile: false,
     notification: false
 }
 

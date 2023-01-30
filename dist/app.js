@@ -1,10 +1,14 @@
 import express from "express";
 const app = express();
 import getConnection from "./config/db.js";
+import { authConfig } from "./config/auth.js";
 import cors from "cors";
+import { config } from "dotenv";
+config();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(authConfig);
 import indexRouter from "./routes/index.routes.js";
 import { userRouter } from "./routes/user.routes.js";
 import { customerRouter } from "./routes/customer.routes.js";

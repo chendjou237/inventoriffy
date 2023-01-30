@@ -1,59 +1,57 @@
-import { Request, response, Response } from "express";
-import  businessModels  from "../models/business.models.js";
 
-export const  getBusinesses = async(req: Request, res: Response) => {
+
+
+import { Request,  Response } from "express";
+import { getBusinesses,getbusiness, postbusiness, updatebusiness, deletebusiness } from "../services/business.services.js";
+
+export const getBusinessesController = async (req: Request, res: Response) => {
   try {
-    const businesss = await (await businessModels.find());
-    res.status(200).send(businesss);
+   const business = await getBusinesses();
+    res.status(200).send(business);
   } catch (error) {
-    throw error
+    res.status(500).send(error);
   }
-  res.status(200).send("get businesss");
+};
+export const getBusinessController = async (req: Request, res: Response) => {
+  try {
+   const business = await getbusiness(req.query.id.toString());
+    res.status(200).send(business);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
-export const postBusiness = async(req: Request, res: Response) => {
-  if(!req.body.name || !req.body.email) {
-    res.status(400).send("name and unit price are required");
-    return;
-  }
+export const postBusinessesController = async (req: Request, res: Response) => {
+
 
   try {
-    const newBusiness =  (await businessModels.create(req.body));
- await newBusiness.save();
+    const newBusiness = await postbusiness(req.body);
 
-  res
-    .status(200)
-    .send(
-      "posted business name is " + req.body.name + " and email is " + req.body.email
-    );
-    
+    res
+      .status(200)
+      .send(`posted ${newBusiness} was created`);
   } catch (error) {
-    throw new Error(`${error}`);
-    
+    res.status(500).send("something went wrong" + error);
   }
- 
 };
 
-export const updateBusiness = async (req: Request, res: Response) => {
+export const updateBusinessController = async (req: Request, res: Response) => {
   
-  const query = { _id: req.query.id};
-
-  const updateDocument = { $set: req.body};
+ 
 
   try { 
-   const resp = await businessModels.findOneAndUpdate(query, updateDocument,  {upsert: true});
-   await resp.save()
-    response.status(200).send("successfully updated business");
+ await  updatebusiness( req.query.id.toString(),req.body);
+    res.status(200).send("successfully updated employee");
   } catch (error) {
     res.status(500).send(`this was the error: ${error}`);
   }
 };
 
-export const deleteBusiness = async (req: Request, res: Response) => {
+export const deleteBusinessController = async (req: Request, res: Response) => {
   const query = { _id: req.query.id };
   try {
-    const resp = await businessModels.deleteOne(query);
-    res.send("deleted successfully" + resp.acknowledged);
+    await deletebusiness(req.query.id.toString());
+    res.send("deleted successfully" );
   } catch (error) {
     res.status(500).send("something went wrong" + error);
   }

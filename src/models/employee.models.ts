@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Employee } from "../interfaces/employee.interfaces";
+import { Employee } from "../interfaces/employee.interfaces.js";
 
 const schema = new Schema<Employee>({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
